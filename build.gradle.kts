@@ -2,7 +2,7 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ConfigureShadowRelocatio
 import fr.xpdustry.toxopid.ModPlatform
 import fr.xpdustry.toxopid.util.ModMetadata
 import fr.xpdustry.toxopid.util.anukenJitpack
-import fr.xpdustry.toxopid.util.mindustryDependencies
+//import fr.xpdustry.toxopid.util.mindustryDependencies
 import net.ltgt.gradle.errorprone.CheckSeverity
 import net.ltgt.gradle.errorprone.errorprone
 
@@ -31,7 +31,11 @@ repositories {
 }
 
 dependencies {
-    mindustryDependencies()
+//    mindustryDependencies()
+//    compileOnly ("com.github.Anuken.MindustryJitpack:v136")
+    compileOnly("com.github.Anuken.Arc:arc-core:v137")
+    compileOnly("com.github.Anuken.Mindustry:core:v137")
+//    compileOnly ("com.github.Anuken.Arc:arc-core:dfcb21ce564a07d9b36c8aead62fc62531dc05ab")
 
     val junit = "5.8.2"
     testImplementation("org.junit.jupiter:junit-jupiter-params:$junit")

@@ -1,13 +1,13 @@
 {
-  "name": "xpdustry-template",
-  "displayName": "Xpdustry TemplatePlugin",
-  "author": "Phinner",
-  "description": "A template plugin for easier development, enjoy.",
-  "version": "3.1.1-SNAPSHOT",
-  "minGameVersion": "126",
+  "name": "ukrmin-themines",
+  "displayName": "The Mines by Prosta4ok_ua",
+  "author": "Prosta4ok_ua",
+  "description": "A plugin adds new gamemode to Mindustry",
+  "version": "0.0.0",
+  "minGameVersion": "137",
   "hidden": true,
   "java": true,
-  "main": "fr.xpdustry.template.TemplatePlugin",
-  "repo": "Xpdustry/TemplatePlugin",
+  "main": "prosta.ukrmin.Randomdustry",
+  "repo": "UkrainianMindustry/TheMines",
   "dependencies": []
 }

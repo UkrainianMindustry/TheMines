@@ -23,18 +23,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package fr.xpdustry.template;
+package prosta.ukrmin;
 
 import arc.util.CommandHandler;
 import arc.util.Log;
 import mindustry.mod.Plugin;
 import org.jetbrains.annotations.NotNull;
+import prosta.ukrmin.gamemodes.TheMines;
 
 /**
  * Template plugin.
  */
 @SuppressWarnings("unused")
-public class TemplatePlugin extends Plugin {
+public class Randomdustry extends Plugin {
 
     /**
      * This method is called when game initializes.
@@ -42,6 +43,12 @@ public class TemplatePlugin extends Plugin {
     @Override
     public void init() {
         Log.info("Bonjour !");
+        System.out.println("heheehe");
+        Log.info("WHAT DID YOU DO");
+
+
+        TheMines.init();
+
     }
 
     /**
