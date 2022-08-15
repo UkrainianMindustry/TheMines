@@ -87,4 +87,57 @@ public class TheMines {
                 UnitTypes.gamma
         );
     }
+
+    public void registerClientCommands(CommandHandler handler) {
+
+        handler.<Player>register("core", "creates a new core block", (strings, player) -> {
+            Iterable<NetConnection> connections = Vars.net.getConnections();
+
+            // перевірити дистанцію між ядрами, якщо ядро знайдене - повідомити гравця та закінчити виконання коду
+            for(NetConnection conn: connections) {
+                double d = Math.sqrt(((player.x - conn.player.core().x) * (player.x - conn.player.core().x)) + ((player.y - conn.player.team().core().y) * (player.y - conn.player.team().core().y)));
+
+                Log.info("Distance: " + d);
+
+                if(d <= 150) {
+                    player.sendMessage("[red]У вашому радіусі знайдений ворожий блок, будь-ласка знайдіть інше місце.");
+                    return;
+                }
+            }
+
+            // якщо ж у радіусі гравця ядрів немає тоді перевірити на кількість ресурсів в головному ядрі та зробити все необхідне
+            if(player.team().core().items().get(Items.copper) >= 1500 & player.team().core().items().get(Items.lead) >= 800) {
+
+                // видалити запаси з ядра
+                player.team().core().removeStack(Items.copper, 1500);
+                player.team().core().removeStack(Items.lead, 800);
+
+                // побудувати ядро та повідомити гравця про успішне виконання комманди
+                // TODO реалізувати будування ядра
+                player.sendMessage("[green]Ядро створене!");
+
+                return;
+
+                // якщо у головному ядрі не знайдено необхідну кількість ресурсів тоді перевірити на кількість ядер, якщо їх більше одного тоді шукати у кожному ресурси
+            } else if(player.team().cores().size > 1) {
+                for(CoreBlock.CoreBuild coreBuild: player.team().cores()) {
+
+                    // перевірка на ресурси, якщо все що потрібно є тоді виконати те що було у першій перевірці
+                    if(coreBuild.items().get(Items.copper) >= 1500 & coreBuild.items().get(Items.lead) >= 800) {
+
+                        coreBuild.removeStack(Items.copper, 1500);
+                        coreBuild.removeStack(Items.lead, 800);
+
+
+                        // TODO реалізувати будування ядра
+                        player.sendMessage("[green]Ядро створене!");
+                        return;
+                    }
+                }
+            }
+
+            // якщо ж жодних попередніх подій не виконується тоді все дійде до цього фрагрменту коду.
+            player.sendMessage("[red]У ядрі не достатньо ресурсів!\n[green]Необхідні ресурси: 1500 Міді, 800 Свинцю.");
+        });
+    }
 }
