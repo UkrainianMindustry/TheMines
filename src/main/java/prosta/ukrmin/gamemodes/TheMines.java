@@ -1,6 +1,7 @@
 package prosta.ukrmin.gamemodes;
 
 import arc.math.Rand;
+import arc.util.CommandHandler;
 import arc.util.Log;
 import arc.util.Timer;
 import mindustry.Vars;
@@ -11,6 +12,8 @@ import mindustry.game.Team;
 import mindustry.gen.Building;
 import mindustry.gen.Call;
 import mindustry.gen.Groups;
+import mindustry.gen.Player;
+import mindustry.net.NetConnection;
 import mindustry.type.ItemStack;
 import mindustry.world.Block;
 import mindustry.world.Tile;
@@ -114,6 +117,7 @@ public class TheMines {
 
                 // побудувати ядро та повідомити гравця про успішне виконання комманди
                 // TODO реалізувати будування ядра
+
                 player.sendMessage("[green]Ядро створене!");
 
                 return;
