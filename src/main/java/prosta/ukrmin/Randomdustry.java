@@ -27,6 +27,7 @@ package prosta.ukrmin;
 
 import arc.util.CommandHandler;
 import arc.util.Log;
+import mindustry.gen.Player;
 import mindustry.mod.Plugin;
 import org.jetbrains.annotations.NotNull;
 import prosta.ukrmin.gamemodes.TheMines;
@@ -56,6 +57,7 @@ public class Randomdustry extends Plugin {
      */
     @Override
     public void registerServerCommands(@NotNull CommandHandler handler) {
+
     }
 
     /**
@@ -63,5 +65,6 @@ public class Randomdustry extends Plugin {
      */
     @Override
     public void registerClientCommands(@NotNull CommandHandler handler) {
+        handler.<Player>register("core", "creates a new core block", TheMines::coreCommand);
     }
 }
